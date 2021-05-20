@@ -1,9 +1,8 @@
-<!--
 <h1 align="center">
   <br>
-  <img src="https://github.com/rafaeldellaquila/coffeelake/blob/main/src/assets/coffeelake_horizontal.svg?raw=true" alt="Coffee Lake" width="300">
+  <img src="https://raw.githubusercontent.com/rafaeldellaquila/coffeelake/main/src/assets/coffeelake_horizontal.svg" alt="Coffee Lake" width="300">
 </h1>
--->
+
 <p align="center">New application for coffee lover learn about it . making new recipes and courses. all in one place.</p>
 - Wip Readme
 
