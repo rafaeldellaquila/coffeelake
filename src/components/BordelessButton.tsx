@@ -1,9 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
-
 import {
-  BorderlessButton,
-  BorderlessButtonProps,
   RectButton,
   RectButtonProps,
 } from 'react-native-gesture-handler';
@@ -22,7 +19,11 @@ export default function BordelessButton({
   return (
     <RectButton {...rest} style={styles.container}>
       <Text style={styles.BordelessText}>{title}</Text>
-      <Octicons name='chevron-right' size={20} color='black' />
+      <Octicons
+        name='chevron-right'
+        size={20}
+        color={colors.pure}
+      />
     </RectButton>
   );
 }
@@ -36,5 +37,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: fonts.bold,
     marginRight: 10,
+    color: colors.pure,
   },
 });

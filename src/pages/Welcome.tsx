@@ -1,16 +1,17 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import BordelessButton from '../components/BordelessButton';
-import imgVerticalLogo from '../assets/coffeelake_vertical.png';
-import Button from '../components/Button';
 import { useNavigation } from '@react-navigation/core';
+
+import imgVerticalLogo from '../assets/coffeelake_vertical.png';
+import BordelessButton from '../components/BordelessButton';
+import Button from '../components/Button';
 
 export function Welcome() {
   const navigation = useNavigation();
 
-  function handleFunctions() {
-    navigation.navigate('HowItWorksFirst');
+  function handleFunctionsApp() {
+    navigation.navigate('HowItWorks');
   }
 
   return (
@@ -20,7 +21,7 @@ export function Welcome() {
         <Button
           bordered={true}
           title='como funciona?'
-          onPress={handleFunctions}
+          onPress={handleFunctionsApp}
         />
         <Button title='cadastrar' />
         <View style={styles.bordelessButton}>
