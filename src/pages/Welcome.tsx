@@ -11,7 +11,7 @@ export function Welcome() {
   const navigation = useNavigation();
 
   function handleFunctionsApp() {
-    navigation.navigate('HowItWorks');
+    navigation.navigate('Apresentation');
   }
 
   return (
