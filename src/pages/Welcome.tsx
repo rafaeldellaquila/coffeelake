@@ -14,6 +14,10 @@ export function Welcome() {
     navigation.navigate('HowItWorks');
   }
 
+  function handleRegister() {
+    navigation.navigate('Register');
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Image source={imgVerticalLogo} style={styles.image} />
@@ -23,7 +27,7 @@ export function Welcome() {
           title='como funciona?'
           onPress={handleFunctionsApp}
         />
-        <Button title='cadastrar' />
+        <Button title='cadastrar' onPress={handleRegister} />
         <View style={styles.bordelessButton}>
           <BordelessButton title='login' />
         </View>
