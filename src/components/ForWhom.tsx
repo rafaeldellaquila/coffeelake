@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
-export function ForWhom() {
+export default function ForWhom() {
   return (
     <View>
       <Text style={styles.title}>se você é um lover</Text>

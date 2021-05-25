@@ -4,18 +4,18 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/core';
 import { BorderlessButton } from 'react-native-gesture-handler';
-import Dots from 'react-native-dots-pagination';
+
 import BordelessButton from '../components/BordelessButton';
 import colors from '../styles/colors';
-
-import { AboutUs } from '../components/AboutUs';
-import { ForWhom } from '../components/ForWhom';
-import { StartNow } from '../components/StartNow';
-import Button from '../components/Button';
+import AboutUs from '../components/AboutUs';
+import ForWhom from '../components/ForWhom';
+import StartNow from '../components/StartNow';
 
 export function HowItWorks() {
   const [internalPage, setInternalPage] = useState(0);
   const navigation = useNavigation();
+  let content;
+  let nextButton;
 
   function handleBackButton() {
     if (internalPage === 0) {
@@ -30,91 +30,44 @@ export function HowItWorks() {
   }
 
   if (internalPage === 0) {
-    return (
-      <SafeAreaView style={styles.container}>
-        <BorderlessButton
-          style={styles.button}
-          onPress={handleBackButton}
-        >
-          <MaterialCommunityIcons
-            name='arrow-left'
-            size={24}
-            color={colors.pure}
-          />
-        </BorderlessButton>
-        <AboutUs />
-        <View style={styles.contentButton}>
-          <BordelessButton
-            title='próximo'
-            onPress={handleNextButton}
-          />
-        </View>
-        <Dots
-          length={3}
-          active={internalPage}
-          passiveColor={colors.mocha}
-          activeColor={colors.pure}
-          marginHorizontal={10}
-        />
-      </SafeAreaView>
+    content = <AboutUs />;
+    nextButton = (
+      <BordelessButton
+        title='próximo'
+        onPress={handleNextButton}
+      />
     );
   } else if (internalPage === 1) {
-    return (
-      <SafeAreaView style={styles.container}>
-        <BorderlessButton
-          style={styles.button}
-          onPress={handleBackButton}
-        >
-          <MaterialCommunityIcons
-            name='arrow-left'
-            size={24}
-            color={colors.pure}
-          />
-        </BorderlessButton>
-        <ForWhom />
-        <View style={styles.contentButton}>
-          <BordelessButton
-            title='próximo'
-            onPress={handleNextButton}
-          />
-        </View>
-        <Dots
-          length={3}
-          active={internalPage}
-          passiveColor={colors.mocha}
-          activeColor={colors.pure}
-          marginHorizontal={10}
-        />
-      </SafeAreaView>
+    content = <ForWhom />;
+    nextButton = (
+      <BordelessButton
+        title='próximo'
+        onPress={handleNextButton}
+      />
     );
   } else if (internalPage === 2) {
-    return (
-      <SafeAreaView style={styles.container}>
-        <BorderlessButton
-          style={styles.button}
-          onPress={handleBackButton}
-        >
-          <MaterialCommunityIcons
-            name='arrow-left'
-            size={24}
-            color={colors.pure}
-          />
-        </BorderlessButton>
-        <StartNow />
-        <View style={styles.contentButton}>
-          <Button title='cadastrar' />
-          <Button title='já tenho login' bordered={true} />
-        </View>
-        <Dots
-          length={3}
-          active={internalPage}
-          passiveColor={colors.mocha}
-          activeColor={colors.pure}
-          marginHorizontal={10}
-        />
-      </SafeAreaView>
-    );
+    content = <StartNow />;
+    nextButton;
+  } else {
+    navigation.navigate('Register');
   }
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <BorderlessButton
+        style={styles.button}
+        onPress={handleBackButton}
+      >
+        <MaterialCommunityIcons
+          name='arrow-left'
+          size={24}
+          color={colors.pure}
+        />
+      </BorderlessButton>
+      {content}
+      <View style={styles.contentButton}>{nextButton}</View>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
