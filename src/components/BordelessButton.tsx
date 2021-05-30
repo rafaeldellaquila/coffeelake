@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import {
-  RectButton,
-  RectButtonProps,
+  BorderlessButton,
+  BorderlessButtonProps,
 } from 'react-native-gesture-handler';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { Octicons } from '@expo/vector-icons';
 
-interface ButtonProps extends RectButtonProps {
+interface ButtonProps extends BorderlessButtonProps {
   title: string;
 }
 
@@ -17,14 +17,14 @@ export default function BordelessButton({
   ...rest
 }: ButtonProps) {
   return (
-    <RectButton {...rest} style={styles.container}>
+    <BorderlessButton {...rest} style={styles.container}>
       <Text style={styles.BordelessText}>{title}</Text>
       <Octicons
         name='chevron-right'
         size={20}
         color={colors.pure}
       />
-    </RectButton>
+    </BorderlessButton>
   );
 }
 
