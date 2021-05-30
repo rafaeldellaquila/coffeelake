@@ -9,8 +9,11 @@ import { useNavigation } from '@react-navigation/core';
 export default function StartNow() {
   const navigation = useNavigation();
 
-  function handleRegister() {
+  function handleRegisterPage() {
     navigation.navigate('Register');
+  }
+  function handleLoginPage() {
+    navigation.navigate('Login');
   }
   return (
     <View>
@@ -21,8 +24,15 @@ export default function StartNow() {
       </Text>
       <View>
         <View style={styles.contentButton}>
-          <Button title='cadastrar' onPress={handleRegister} />
-          <Button title='já tenho login' bordered={true} />
+          <Button
+            title='cadastrar'
+            onPress={handleRegisterPage}
+          />
+          <Button
+            title='já tenho login'
+            bordered={true}
+            onPress={handleLoginPage}
+          />
         </View>
       </View>
     </View>
