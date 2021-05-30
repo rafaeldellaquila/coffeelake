@@ -1,12 +1,11 @@
+import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/core';
 
 import imgVerticalLogo from '../assets/coffeelake_vertical.png';
 import BordelessButton from '../components/BordelessButton';
 import Button from '../components/Button';
-
 export function Welcome() {
   const navigation = useNavigation();
 
@@ -14,10 +13,13 @@ export function Welcome() {
     navigation.navigate('HowItWorks');
   }
 
-  function handleRegister() {
+  function handleRegisterPage() {
     navigation.navigate('Register');
   }
 
+  function handleLoginPage() {
+    navigation.navigate('Login');
+  }
   return (
     <SafeAreaView style={styles.container}>
       <Image source={imgVerticalLogo} style={styles.image} />
@@ -27,9 +29,12 @@ export function Welcome() {
           title='como funciona?'
           onPress={handleFunctionsApp}
         />
-        <Button title='cadastrar' onPress={handleRegister} />
+        <Button title='cadastrar' onPress={handleRegisterPage} />
         <View style={styles.bordelessButton}>
-          <BordelessButton title='login' />
+          <BordelessButton
+            title='login'
+            onPress={handleLoginPage}
+          />
         </View>
       </View>
     </SafeAreaView>
