@@ -1,5 +1,6 @@
 export default {
   background: '#F9F5EB',
+  backdrop: 'rgba(243, 235, 217, 0.6)',
   rate: '#FA0',
   favorite: '#F00',
   latte: '#F3EBD9',

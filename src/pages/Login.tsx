@@ -13,6 +13,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import BackButtonWithTitle from '../components/BackButtonWithTitle';
 import BordelessButton from '../components/BordelessButton';
 import Button from '../components/Button';
+import { ForgotPassword } from '../components/ForgotPassword';
 import FormContainer from '../components/FormContainer';
 import SocialLogin from '../components/SocialLogin';
 
@@ -22,6 +23,7 @@ export function Login() {
   function handleRegisterPage() {
     navigation.navigate('Register');
   }
+
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
@@ -36,7 +38,7 @@ export function Login() {
               <Button title='login' />
             </View>
             <View style={styles.lostPassword}>
-              <BordelessButton title='esqueci minha senha' />
+              <ForgotPassword />
             </View>
             <View style={styles.SocialElogin}>
               <SocialLogin />
