@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TextInput } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import BackButtonWithTitle from '../components/BackButtonWithTitle';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
+import { Avatar } from 'react-native-elements';
+import { Input } from 'react-native-elements/dist/input/Input';
 
 export function ProfileEdit() {
   const [checked, setChecked] = useState('barista');
@@ -34,6 +36,16 @@ export function ProfileEdit() {
             <Text style={styles.text}>lover</Text>
           </View>
         </RadioButton.Group>
+      </View>
+      <View>
+        <Avatar
+          rounded
+          source={require('../assets/avatar.png')}
+          size='large'
+        />
+        <Input placeholder='nome' />
+        <Input placeholder='sobrenome' />
+        <Input placeholder='e-mail' />
       </View>
     </SafeAreaView>
   );
