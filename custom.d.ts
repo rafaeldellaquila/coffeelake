@@ -3,4 +3,7 @@ declare module '*.png' {
   export default content;
 }
 
-declare module 'react-native-dots-pagination';
+declare module 'reac-native-elements' {
+  const content: any;
+  export default content;
+}
