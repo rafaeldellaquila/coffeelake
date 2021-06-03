@@ -23,6 +23,9 @@ export function Login() {
   function handleRegisterPage() {
     navigation.navigate('Register');
   }
+  function handleProfileEdit() {
+    navigation.navigate('ProfileEdit');
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -35,7 +38,10 @@ export function Login() {
               <BackButtonWithTitle title='bem vindo de volta!' />
               <FormContainer />
 
-              <Button title='login' />
+              <Button
+                title='login'
+                onPress={handleProfileEdit}
+              />
             </View>
             <View style={styles.lostPassword}>
               <ForgotPassword />

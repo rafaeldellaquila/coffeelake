@@ -1,10 +1,12 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import colors from '../styles/colors';
 import { Welcome } from '../pages/Welcome';
 import { HowItWorks } from '../pages/HowItWorks';
 import { Register } from '../pages/Register';
 import { Login } from '../pages/Login';
+import { ProfileEdit } from '../pages/ProfileEdit';
+
+import colors from '../styles/colors';
 
 const stackRoutes = createStackNavigator();
 
@@ -25,6 +27,10 @@ const AppRoutes: React.FC = () => (
     />
     <stackRoutes.Screen name='Register' component={Register} />
     <stackRoutes.Screen name='Login' component={Login} />
+    <stackRoutes.Screen
+      name='ProfileEdit'
+      component={ProfileEdit}
+    />
   </stackRoutes.Navigator>
 );
 
