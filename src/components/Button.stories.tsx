@@ -1,3 +1,4 @@
+import { Story } from '@storybook/react-native';
 import React from 'react';
 import {
   StyleSheet,
