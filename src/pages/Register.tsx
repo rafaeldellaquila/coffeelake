@@ -3,8 +3,6 @@ import React from 'react';
 import {
   View,
   StyleSheet,
-  KeyboardAvoidingView,
-  Platform,
   Keyboard,
   TouchableWithoutFeedback,
   Dimensions,
@@ -26,29 +24,25 @@ export function Register() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View style={styles.wrapper}>
-            <View style={styles.form}>
-              <BackButtonWithTitle title='cadastro' />
-              <FormContainer />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.wrapper}>
+          <View style={styles.form}>
+            <BackButtonWithTitle title='cadastro' />
+            <FormContainer />
 
-              <Button title='cadastrar' />
-            </View>
-            <View style={styles.SocialElogin}>
-              <SocialLogin />
-            </View>
-            <View style={styles.loginButton}>
-              <BordelessButton
-                title='já tenho um login'
-                onPress={handleLoginPage}
-              />
-            </View>
+            <Button title='cadastrar' />
           </View>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
+          <View style={styles.SocialElogin}>
+            <SocialLogin />
+          </View>
+          <View style={styles.loginButton}>
+            <BordelessButton
+              title='já tenho um login'
+              onPress={handleLoginPage}
+            />
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
     </SafeAreaView>
   );
 }

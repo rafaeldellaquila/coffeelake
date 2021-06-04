@@ -3,8 +3,6 @@ import React from 'react';
 import {
   View,
   StyleSheet,
-  KeyboardAvoidingView,
-  Platform,
   Keyboard,
   TouchableWithoutFeedback,
 } from 'react-native';
@@ -29,35 +27,28 @@ export function Login() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View style={styles.wrapper}>
-            <View style={styles.form}>
-              <BackButtonWithTitle title='bem vindo de volta!' />
-              <FormContainer />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.wrapper}>
+          <View style={styles.form}>
+            <BackButtonWithTitle title='bem vindo de volta!' />
+            <FormContainer />
 
-              <Button
-                title='login'
-                onPress={handleProfileEdit}
+            <Button title='login' onPress={handleProfileEdit} />
+          </View>
+          <View style={styles.lostPassword}>
+            <ForgotPassword />
+          </View>
+          <View style={styles.SocialElogin}>
+            <SocialLogin />
+            <View style={styles.loginButton}>
+              <BordelessButton
+                title='preciso de uma nova conta'
+                onPress={handleRegisterPage}
               />
             </View>
-            <View style={styles.lostPassword}>
-              <ForgotPassword />
-            </View>
-            <View style={styles.SocialElogin}>
-              <SocialLogin />
-              <View style={styles.loginButton}>
-                <BordelessButton
-                  title='preciso de uma nova conta'
-                  onPress={handleRegisterPage}
-                />
-              </View>
-            </View>
           </View>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
+        </View>
+      </TouchableWithoutFeedback>
     </SafeAreaView>
   );
 }
