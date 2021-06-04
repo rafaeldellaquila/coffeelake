@@ -6,8 +6,6 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Platform,
-  ScrollView,
-  Dimensions,
 } from 'react-native';
 import BackButtonWithTitle from '../components/BackButtonWithTitle';
 import colors from '../styles/colors';
@@ -30,93 +28,89 @@ export function ProfileEdit() {
       secondary: colors.cappuccino,
     },
   };
-  const screenHeight = Dimensions.get('window').height;
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.wrapper}
       >
         <BackButtonWithTitle title='editar perfil' />
-        <ScrollView
-          keyboardDismissMode={'on-drag'}
-          style={{ height: screenHeight }}
-          scrollEnabled
-          showsVerticalScrollIndicator={false}
-        >
-          <View>
-            <Text style={styles.title}>qual o seu perfil?</Text>
-            <RadioButton.Group
-              onValueChange={(newValue) => setChecked(newValue)}
-              value={checked}
-            >
-              <View style={styles.radio}>
-                <RadioButton
-                  value='barista'
-                  color={colors.mocha}
-                  uncheckedColor={colors.mocha}
-                />
-                <Text style={styles.text}>barista</Text>
-              </View>
-              <View style={styles.radio}>
-                <RadioButton
-                  value='lover'
-                  color={colors.mocha}
-                  uncheckedColor={colors.mocha}
-                />
-                <Text style={styles.text}>lover</Text>
-              </View>
-            </RadioButton.Group>
-          </View>
 
-          <View>
+        <View>
+          <Text style={styles.title}>qual o seu perfil?</Text>
+          <RadioButton.Group
+            onValueChange={(newValue) => setChecked(newValue)}
+            value={checked}
+          >
+            <View style={styles.radio}>
+              <RadioButton
+                value='barista'
+                color={colors.mocha}
+                uncheckedColor={colors.mocha}
+              />
+              <Text style={styles.text}>barista</Text>
+            </View>
+            <View style={styles.radio}>
+              <RadioButton
+                value='lover'
+                color={colors.mocha}
+                uncheckedColor={colors.mocha}
+              />
+              <Text style={styles.text}>lover</Text>
+            </View>
+          </RadioButton.Group>
+        </View>
+
+        <View>
+          <View style={styles.basicInfo}>
             <Avatar.Image
               source={AvatarImage}
               style={styles.avatarImage}
+              size={80}
             />
-            <TextInput
-              selectionColor={colors.pure}
-              underlineColor={colors.pure}
-              underlineColorAndroid={colors.pure}
-              theme={InputTheme}
-              style={styles.input}
-              label='nome'
-            />
-            <TextInput
-              selectionColor={colors.pure}
-              underlineColor={colors.pure}
-              underlineColorAndroid={colors.pure}
-              theme={InputTheme}
-              style={styles.input}
-              label='sobrenome'
-            />
-            <TextInput
-              style={styles.emailInput}
-              selectionColor={colors.pure}
-              underlineColor={colors.pure}
-              underlineColorAndroid={colors.pure}
-              theme={InputTheme}
-              label='e-mail'
-            />
-            <TextInput
-              style={styles.inputBio}
-              selectionColor={colors.pure}
-              underlineColor={colors.pure}
-              underlineColorAndroid={colors.pure}
-              theme={InputTheme}
-              label='escreva sua bio'
-              multiline
-              numberOfLines={10}
-            />
-            <View style={styles.buttonContainer}>
-              <Text style={styles.disclaimer}>
-                como barista seu perfil passará por uma validação
-                da moderação
-              </Text>
-
-              <Button title='aplicar' style={styles.button} />
+            <View style={styles.inputFullName}>
+              <TextInput
+                selectionColor={colors.pure}
+                underlineColor={colors.pure}
+                underlineColorAndroid={colors.pure}
+                theme={InputTheme}
+                style={styles.input}
+                label='nome'
+              />
+              <TextInput
+                selectionColor={colors.pure}
+                underlineColor={colors.pure}
+                underlineColorAndroid={colors.pure}
+                theme={InputTheme}
+                style={styles.input}
+                label='sobrenome'
+              />
             </View>
           </View>
-        </ScrollView>
+          <TextInput
+            style={styles.input}
+            selectionColor={colors.pure}
+            underlineColor={colors.pure}
+            underlineColorAndroid={colors.pure}
+            theme={InputTheme}
+            label='e-mail'
+          />
+          <TextInput
+            style={styles.inputBio}
+            selectionColor={colors.pure}
+            underlineColor={colors.pure}
+            underlineColorAndroid={colors.pure}
+            theme={InputTheme}
+            label='escreva sua bio'
+            multiline
+            numberOfLines={6}
+          />
+          <Text style={styles.disclaimer}>
+            * como barista seu perfil passará por uma validação
+            da moderação
+          </Text>
+          <Button title='aplicar' />
+        </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
@@ -126,6 +120,10 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 40,
     paddingHorizontal: 40,
+    flex: 1,
+  },
+  wrapper: {
+    justifyContent: 'flex-end',
   },
   title: {
     color: colors.pure,
@@ -143,58 +141,28 @@ const styles = StyleSheet.create({
     fontFamily: fonts.medium,
   },
   avatarImage: {
-    top: 20,
-    marginTop: 20,
-    marginRight: 10,
-    marginBottom: 10,
+    marginRight: 20,
+  },
+  basicInfo: {
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    alignItems: 'center',
+  },
+  inputFullName: {
+    width: '68%',
   },
   input: {
     backgroundColor: colors.background,
-    color: colors.mocha,
-    marginBottom: 5,
-    height: 60,
-    maxWidth: 210,
-    fontSize: 16,
-    fontFamily: fonts.medium,
-    borderColor: colors.pure,
-    left: 100,
-    bottom: 90,
   },
-  emailInput: {
-    backgroundColor: colors.background,
-    color: colors.mocha,
-    marginBottom: 5,
-    height: 60,
-    width: '100%',
-    fontSize: 16,
-    fontFamily: fonts.medium,
-    borderColor: colors.pure,
-    bottom: 94,
-  },
+
   inputBio: {
     backgroundColor: colors.latte,
-    width: '100%',
-    color: colors.mocha,
-    marginBottom: 20,
-    paddingLeft: 20,
-    fontSize: 16,
-    fontFamily: fonts.medium,
-    borderColor: colors.pure,
-    bottom: 80,
-  },
-  buttonContainer: {
-    bottom: 90,
-    flexDirection: 'row',
-    width: 170,
-    alignItems: 'center',
+    marginTop: 20,
   },
   disclaimer: {
+    fontFamily: fonts.medium,
     fontSize: 9.9,
     color: colors.cappuccino,
-    width: 130,
-    marginRight: 10,
-  },
-  button: {
-    width: 125,
+    marginTop: 10,
   },
 });
