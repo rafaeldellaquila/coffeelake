@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import * as ImagePicker from 'expo-image-picker';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   Text,
@@ -6,20 +7,20 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Platform,
+  Image,
 } from 'react-native';
+import { TextInput, RadioButton } from 'react-native-paper';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
 import BackButtonWithTitle from '../components/BackButtonWithTitle';
+import cloudUpload from '../assets/cloudUpload.png';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-import {
-  Avatar,
-  TextInput,
-  RadioButton,
-} from 'react-native-paper';
-import AvatarImage from '../assets/avatar.png';
 import Button from '../components/Button';
 
 export function ProfileEdit() {
   const [checked, setChecked] = useState('barista');
+  const [avatar, setAvatar] = useState('');
   const InputTheme = {
     colors: {
       text: colors.pure,
@@ -28,6 +29,30 @@ export function ProfileEdit() {
       secondary: colors.cappuccino,
     },
   };
+  // pedindo permissão da camera
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== 'web') {
+        const { status } =
+          await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== 'granted') {
+          alert('Nós precisamos da permissão da sua câmera!');
+        }
+      }
+    })();
+  }, []);
+
+  async function pickImage() {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 4],
+    });
+    if (!result.cancelled) {
+      setAvatar(result.uri);
+    }
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
@@ -63,24 +88,32 @@ export function ProfileEdit() {
 
         <View>
           <View style={styles.basicInfo}>
-            <Avatar.Image
-              source={AvatarImage}
-              style={styles.avatarImage}
-              size={80}
-            />
+            <TouchableOpacity
+              style={styles.avatarPlaceholder}
+              onPress={pickImage}
+            >
+              <Image
+                source={
+                  avatar.length > 4
+                    ? { uri: avatar }
+                    : cloudUpload
+                }
+                style={
+                  avatar.length > 4
+                    ? styles.avatarImage
+                    : styles.avatarIcon
+                }
+              />
+            </TouchableOpacity>
             <View style={styles.inputFullName}>
               <TextInput
-                selectionColor={colors.pure}
-                underlineColor={colors.pure}
-                underlineColorAndroid={colors.pure}
+                underlineColor={colors.cappuccino}
                 theme={InputTheme}
                 style={styles.input}
                 label='nome'
               />
               <TextInput
-                selectionColor={colors.pure}
-                underlineColor={colors.pure}
-                underlineColorAndroid={colors.pure}
+                underlineColor={colors.cappuccino}
                 theme={InputTheme}
                 style={styles.input}
                 label='sobrenome'
@@ -89,23 +122,24 @@ export function ProfileEdit() {
           </View>
           <TextInput
             style={styles.input}
-            selectionColor={colors.pure}
-            underlineColor={colors.pure}
-            underlineColorAndroid={colors.pure}
+            underlineColor={colors.cappuccino}
             theme={InputTheme}
             label='e-mail'
           />
           <TextInput
             style={styles.inputBio}
-            selectionColor={colors.pure}
-            underlineColor={colors.pure}
-            underlineColorAndroid={colors.pure}
+            underlineColor={colors.cappuccino}
             theme={InputTheme}
             label='escreva sua bio'
             multiline
             numberOfLines={6}
           />
-          <Text style={styles.disclaimer}>
+          <Text
+            style={[
+              styles.disclaimer,
+              checked === 'lover' && styles.disclaimerDisplay,
+            ]}
+          >
             * como barista seu perfil passará por uma validação
             da moderação
           </Text>
@@ -140,8 +174,23 @@ const styles = StyleSheet.create({
     color: colors.mocha,
     fontFamily: fonts.medium,
   },
-  avatarImage: {
+  avatarPlaceholder: {
+    backgroundColor: colors.cappuccino,
+    width: 80,
+    height: 80,
+    borderRadius: 80,
     marginRight: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  avatarIcon: {
+    width: 40,
+    height: 40,
+  },
+  avatarImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 80,
   },
   basicInfo: {
     flexDirection: 'row',
@@ -164,5 +213,8 @@ const styles = StyleSheet.create({
     fontSize: 9.9,
     color: colors.cappuccino,
     marginTop: 10,
+  },
+  disclaimerDisplay: {
+    display: 'none',
   },
 });
