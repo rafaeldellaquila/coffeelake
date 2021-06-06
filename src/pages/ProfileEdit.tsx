@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import * as ImagePicker from 'expo-image-picker';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   Text,
@@ -11,16 +10,22 @@ import {
 } from 'react-native';
 import { TextInput, RadioButton } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import * as ImagePicker from 'expo-image-picker';
+import firebase from 'firebase';
+import 'firebase/storage';
+import { firebaseConfig } from '../constants/firebase';
 
 import BackButtonWithTitle from '../components/BackButtonWithTitle';
 import cloudUpload from '../assets/cloudUpload.png';
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
+import colors from '../constants/colors';
+import fonts from '../constants/fonts';
 import Button from '../components/Button';
 
 export function ProfileEdit() {
   const [checked, setChecked] = useState('barista');
   const [avatar, setAvatar] = useState('');
+  const [uploading, setUploading] = useState(false);
+
   const InputTheme = {
     colors: {
       text: colors.pure,
@@ -47,12 +52,45 @@ export function ProfileEdit() {
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [4, 4],
+      quality: 1,
     });
+    console.log(result);
+
     if (!result.cancelled) {
       setAvatar(result.uri);
     }
   }
 
+  async function uploadImage() {
+    const response = await fetch(avatar);
+    const blob = await response.blob();
+
+    const refLocation = firebase
+      .storage()
+      .ref()
+      .child(new Date().toISOString());
+    const snapshot = refLocation.put(blob as Blob);
+
+    snapshot.on(
+      firebase.storage.TaskEvent.STATE_CHANGED,
+      () => {
+        setUploading(true);
+        console.log('foi');
+      },
+      (error: any) => {
+        setUploading(false);
+        console.log(error);
+      },
+      () => {
+        setUploading(false);
+        snapshot.snapshot.ref.getDownloadURL().then((url) => {
+          console.log('download,', url);
+          return url;
+        });
+      }
+    );
+  }
+  // Issue SetTimeLocation https://github.com/facebook/react-native/issues/12981
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
@@ -143,7 +181,7 @@ export function ProfileEdit() {
             * como barista seu perfil passará por uma validação
             da moderação
           </Text>
-          <Button title='aplicar' />
+          <Button title='aplicar' onPress={uploadImage} />
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>

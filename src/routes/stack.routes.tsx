@@ -6,7 +6,7 @@ import { Register } from '../pages/Register';
 import { Login } from '../pages/Login';
 import { ProfileEdit } from '../pages/ProfileEdit';
 
-import colors from '../styles/colors';
+import colors from '../constants/colors';
 
 const stackRoutes = createStackNavigator();
 

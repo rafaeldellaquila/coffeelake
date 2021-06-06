@@ -3,8 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
+import colors from '../constants/colors';
+import fonts from '../constants/fonts';
 import { useNavigation } from '@react-navigation/core';
 
 interface BackButtonWithTitleProps {

@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/core';
 import { BorderlessButton } from 'react-native-gesture-handler';
 
 import BordelessButton from '../components/BordelessButton';
-import colors from '../styles/colors';
+import colors from '../constants/colors';
 import AboutUs from '../components/AboutUs';
 import ForWhom from '../components/ForWhom';
 import StartNow from '../components/StartNow';

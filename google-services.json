@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "184821004695",
+    "project_id": "coffeelake-144e8",
+    "storage_bucket": "coffeelake-144e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184821004695:android:de8ad10b924baf8f1c6cd2",
+        "android_client_info": {
+          "package_name": "com.rdaquila.coffeelake"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "184821004695-t5dhh7cfhlal1c4ng59bbsfo0rk24poh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANNwqX6LxpTDoCtosKUWwZ1c-RHYJ7LBE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "184821004695-t5dhh7cfhlal1c4ng59bbsfo0rk24poh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "184821004695-nhiovatqaor6v7n44veg70dbh8la52q3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.rdaquila.coffeelake"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

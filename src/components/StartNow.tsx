@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
+import colors from '../constants/colors';
+import fonts from '../constants/fonts';
 import imgVerticalLogo from '../assets/coffeelake_vertical.png';
 import Button from './Button';
 import { useNavigation } from '@react-navigation/core';

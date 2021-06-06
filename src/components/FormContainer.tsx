@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { TextInput } from 'react-native-paper';
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
+import colors from '../constants/colors';
+import fonts from '../constants/fonts';
 
 export default function FormContainer() {
   const [showPassword, setShowPassword] = useState(true);

@@ -3,8 +3,8 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { Overlay } from 'react-native-elements/dist/overlay/Overlay';
 import BordelessButton from './BordelessButton';
 import Button from './Button';
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
+import colors from '../constants/colors';
+import fonts from '../constants/fonts';
 
 export function ForgotPassword() {
   const [visible, setVisible] = useState(false);

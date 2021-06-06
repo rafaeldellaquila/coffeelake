@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
+import colors from '../constants/colors';
+import fonts from '../constants/fonts';
 import facebook_logo from '../assets/facebook_logo.png';
 import gmail_logo from '../assets/gmail_logo.png';
 import instagram_logo from '../assets/instagram_logo.png';

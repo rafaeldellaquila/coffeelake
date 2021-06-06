@@ -4,8 +4,8 @@ import {
   BorderlessButton,
   BorderlessButtonProps,
 } from 'react-native-gesture-handler';
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
+import colors from '../constants/colors';
+import fonts from '../constants/fonts';
 import { Octicons } from '@expo/vector-icons';
 
 interface ButtonProps extends BorderlessButtonProps {
