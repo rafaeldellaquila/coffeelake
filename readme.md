@@ -28,8 +28,7 @@
 
 - **React Js**
 - **Next.js**
-- **Axios**
-- **json-server**
+- **Firebase**
 
 ## Getting started
 
