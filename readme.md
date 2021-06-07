@@ -26,8 +26,8 @@
 
 [//]: #
 
-- **React Js**
-- **Next.js**
+- **React Native**
+- **Expo**
 - **Firebase**
 
 ## Getting started
