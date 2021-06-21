@@ -4,7 +4,7 @@
 </h1>
 
 <p align="center">New application for coffee lover learn about it . making new recipes and courses. all in one place.</p>
-- Wip Readme. THIS APP WILL BE CHANGE FOR A PWA
+<p align="center">- Wip Readme. THIS APP WILL BE CHANGE FOR A PWA</p>
 
 <p align="center">
   <a href="https://opensource.org/licenses/GPL-3.0">
